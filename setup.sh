@@ -53,6 +53,8 @@ sudo apt-get -y install hyphen-fi hyphen-ga hyphen-id
 echo -e '\e[1;32m\n\n\nInstalling VNC and SSH servers ...\n\n\n\e[0m'
 sudo apt-get -y install x11vnc openssh-server
 
+# You should replace both instances of SSHKEY with your public ssh key
+
 # Set up SSH keys and disable password login
 echo -e '\e[1;32m\n\n\nConfiguring SSH access ...\n\n\n\e[0m'
 mkdir ~/.ssh
