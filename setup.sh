@@ -3,12 +3,15 @@
 # Written by Jonathan McMahel
 # jonathan.mcmahel@durhamrescuemission.org
 
+# You should replace all four instances of USERNAME with the actual username
+# of the admin account you will be using before you run the script
+
 # Make sure current user is USERNAME
 if [ $USER == USERNAME ]; then
-  echo -e "\e[1;32mYou are signed in as $USER\e[0m"
+  echo -e "\e[1;32m\n\n\nYou are signed in as $USER\n\n\n\e[0m"
 else
-  echo -e '\e[1;31mYou are not signed in as USERNAME\e[0m'
-  echo -e '\e[1;31mPlease sign in as USERNAME and run the script again\e[0m'
+  echo -e '\e[1;31m\n\n\nYou are not signed in as USERNAME\n\n\n\e[0m'
+  echo -e '\e[1;31m\n\n\nPlease sign in as USERNAME and run the script again\n\n\n\e[0m'
   exit 0
 fi
 
@@ -19,14 +22,20 @@ sudo -v
 echo -e '\e[1;32m\n\n\nSetting up local mirrors ...\n\n\n\e[0m'
 sudo rm /etc/apt/sources.list.d/official-package-repositories.list
 sudo touch /etc/apt/sources.list.d/official-package-repositories.list
-echo 'deb http://mirror.cs.jmu.edu/pub/linuxmint/packages ulyssa main upstream import backport' | sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
+echo 'deb http://mirror.cs.jmu.edu/pub/linuxmint/packages ulyssa main upstream import backport' | \
+  sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
 echo '' | sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
-echo 'deb http://mirror.cs.jmu.edu/pub/ubuntu focal main restricted universe multiverse' | sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
-echo 'deb http://mirror.cs.jmu.edu/pub/ubuntu focal-updates main restricted universe multiverse' | sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
-echo 'deb http://mirror.cs.jmu.edu/pub/ubuntu focal-backports main restricted universe multiverse' | sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
+echo 'deb http://mirror.cs.jmu.edu/pub/ubuntu focal main restricted universe multiverse' | \
+  sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
+echo 'deb http://mirror.cs.jmu.edu/pub/ubuntu focal-updates main restricted universe multiverse' | \
+  sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
+echo 'deb http://mirror.cs.jmu.edu/pub/ubuntu focal-backports main restricted universe multiverse' | \
+  sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
 echo '' | sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
-echo 'deb http://security.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse' | sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
-echo 'deb http://archive.canonical.com/ubuntu/ focal partner' | sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
+echo 'deb http://security.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse' | \
+  sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
+echo 'deb http://archive.canonical.com/ubuntu/ focal partner' | \
+  sudo tee -a /etc/apt/sources.list.d/official-package-repositories.list > /dev/null
 
 # Update apt cache
 echo -e '\e[1;32m\n\n\nUpdating the APT cache ...\n\n\n\e[0m'
